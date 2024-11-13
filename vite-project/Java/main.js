@@ -9,12 +9,12 @@ document.querySelector(".btn").addEventListener("click", function () {
     document.body.classList.remove("warm");
   }
 });
-setupCounter(document.querySelector("#counter"));
+
 const nflTeams = [
   {
     name: "Arizona Cardinals",
     city: "Glendale",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Arizona_Cardinals_logo.svg",
+    logo: "./public/card.png",
   },
   {
     name: "Atlanta Falcons",
@@ -112,14 +112,16 @@ const nflTeams = [
     logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/Miami_Dolphins_logo.svg",
   },
 ];
-
-const container = document.getElementById("container");
-
+const container = document.querySelector("#nflteams");
 nflTeams.forEach((team) => {
-  const listItem = document.createElement("li");
-  DOMSelectors = `
-    <img src="${team.logo}" alt="${team.name} logo">
-    ${team.name} (${team.city})
+  const teamCardHTML = `
+    <div class="team-card">
+      <img src="${team.logo}" alt="${team.name} logo" class="team-logo" />
+      <div class="team-info">
+        <h3>${team.name}</h3>
+        <p>${team.city}</p>
+      </div>
+    </div>
   `;
-  teamList.appendChild(listItem);
+  container.insertAdjacentHTML("beforeend", teamCardHTML);
 });
