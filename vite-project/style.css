@@ -11,13 +11,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
---light-blue: #2998ff;
---red: red;
+  --light-blue: #2998ff;
+  --red: red;
 }
-.cool{
+
+.cool {
   background-color: aliceblue;
 }
-.warm{
+.warm {
   background-color: purple;
 }
 
@@ -27,39 +28,50 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-background-color:var(--light-blue);
+  flex-direction: column; 
+  background-color: var(--light-blue);
 }
 
-
+#filter {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background-color: white;
+  margin-top: 20px; 
+border-radius: 10px;
+}
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid;
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
+  font-size: 15px;
   background-color: var(--red);
-  cursor: pointer;
   transition: border-color 0.25s;
+  cursor: pointer;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 
 #nflteams {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  padding-top: 30px; 
 }
 
 .team-card {
-  width: 350px;
+  width: 250px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -79,7 +91,6 @@ button:focus-visible {
   margin-bottom: 15px;
 }
 
-
 .team-info h3 {
   font-size: 25px;
   margin-bottom: 5px;
@@ -90,4 +101,3 @@ button:focus-visible {
   font-size: 14px;
   color: darkgray;
 }
-

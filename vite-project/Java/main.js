@@ -15,113 +15,172 @@ const nflTeams = [
     name: "Arizona Cardinals",
     city: "Glendale",
     logo: "./public/card.png",
+    conference: "NFC",
   },
   {
     name: "Atlanta Falcons",
     city: "Atlanta",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/48/Atlanta_Falcons_logo.svg",
+    logo: "./public/2.png",
+    conference: "NFC",
   },
   {
     name: "Baltimore Ravens",
     city: "Baltimore",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/6/61/Baltimore_Ravens_logo.svg",
+    logo: "./public/3.png",
+    conference: "AFC",
   },
   {
     name: "Buffalo Bills",
     city: "Buffalo",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/7/77/Buffalo_Bills_logo.svg",
+    logo: "./public/4.png",
+    conference: "AFC",
   },
   {
     name: "Carolina Panthers",
     city: "Charlotte",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/39/Carolina_Panthers_logo.svg",
+    logo: "./public/5.png",
+    conference: "NFC",
   },
   {
     name: "Chicago Bears",
     city: "Chicago",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Chicago_Bears_logo.svg",
+    logo: "./public/6.png",
+    conference: "NFC",
   },
   {
     name: "Cincinnati Bengals",
     city: "Cincinnati",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Cincinnati_Bengals_logo.svg",
+    logo: "./public/7.png",
+    conference: "AFC",
   },
   {
     name: "Cleveland Browns",
     city: "Cleveland",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/aa/Cleveland_Browns_logo.svg",
+    logo: "./public/8.png",
+    conference: "AFC",
   },
   {
     name: "Dallas Cowboys",
     city: "Arlington",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Dallas_Cowboys_logo.svg",
+    logo: "./public/9.png",
+    conference: "NFC",
   },
   {
     name: "Denver Broncos",
     city: "Denver",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/7/74/Denver_Broncos_logo.svg",
+    logo: "./public/10.png",
+    conference: "AFC",
   },
   {
     name: "Detroit Lions",
     city: "Detroit",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Detroit_Lions_logo.svg",
+    logo: "./public/11.png",
+    conference: "NFC",
   },
   {
     name: "Green Bay Packers",
     city: "Green Bay",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/6/68/Green_Bay_Packers_logo.svg",
+    logo: "./public/12.png",
+    conference: "NFC",
   },
   {
     name: "Houston Texans",
     city: "Houston",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Houston_Texans_logo.svg",
+    logo: "./public/13.png",
+    conference: "AFC",
   },
   {
     name: "Indianapolis Colts",
     city: "Indianapolis",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Indianapolis_Colts_logo.svg",
+    logo: "./public/14.png",
+    conference: "AFC",
   },
   {
     name: "Jacksonville Jaguars",
     city: "Jacksonville",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Jacksonville_Jaguars_logo.svg",
+    logo: "./public/15.png",
+    conference: "AFC",
   },
   {
     name: "Kansas City Chiefs",
     city: "Kansas City",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Kansas_City_Chiefs_logo.svg",
+    logo: "./public/16.png",
+    conference: "AFC",
   },
   {
     name: "Las Vegas Raiders",
     city: "Las Vegas",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Las_Vegas_Raiders_logo.svg",
+    logo: "./public/17.png",
+    conference: "AFC",
   },
   {
     name: "Los Angeles Chargers",
     city: "Los Angeles",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Los_Angeles_Chargers_logo.svg",
+    logo: "./public/18.png",
+    conference: "AFC",
   },
   {
     name: "Los Angeles Rams",
     city: "Los Angeles",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Los_Angeles_Rams_logo.svg",
+    logo: "./public/19.png",
+    conference: "NFC",
   },
   {
     name: "Miami Dolphins",
     city: "Miami",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/6/64/Miami_Dolphins_logo.svg",
+    logo: "./public/20.png",
+    conference: "AFC",
   },
 ];
-const container = document.querySelector("#nflteams");
-nflTeams.forEach((team) => {
-  const teamCardHTML = `
-    <div class="team-card">
-      <img src="${team.logo}" alt="${team.name} logo" class="team-logo" />
-      <div class="team-info">
-        <h3>${team.name}</h3>
-        <p>${team.city}</p>
+
+function displayTeams(teams) {
+  const container = document.querySelector("#nflteams");
+  container.innerHTML = "";
+  teams.forEach((team) => {
+    const teamCardHTML = `
+      <div class="team-card">
+        <img src="${team.logo}" alt="${team.name} logo" class="team-logo" />
+        <div class="team-info">
+          <h3>${team.name}</h3>
+          <p>${team.city}</p>
+        </div>
       </div>
-    </div>
-  `;
-  container.insertAdjacentHTML("beforeend", teamCardHTML);
+    `;
+    container.insertAdjacentHTML("beforeend", teamCardHTML);
+  });
+}
+
+displayTeams(nflTeams);
+
+document.querySelector("#showAllTeams").addEventListener("click", () => {
+  displayTeams(nflTeams);
+});
+
+document.querySelector("#showAfcTeams").addEventListener("click", () => {
+  const afcTeams = nflTeams.filter((team) => team.conference === "AFC");
+  displayTeams(afcTeams);
+});
+
+document.querySelector("#showNfcTeams").addEventListener("click", () => {
+  const nfcTeams = nflTeams.filter((team) => team.conference === "NFC");
+  displayTeams(nfcTeams);
+});
+
+document.querySelector("#showSuperbowlTeams").addEventListener("click", () => {
+  const superbowlTeams = nflTeams.filter((team) => {
+    const superbowlTeamsList = [
+      "Miami Dolphins",
+      "Dallas Cowboys",
+      "Baltimore Ravens",
+      "Denver Broncos",
+      "Indianapolis Colts",
+      "Kansas City Chiefs",
+      "Las Vegas Raiders",
+      "Chicago Bears",
+      "Green Bay Packers",
+      "Los Angeles Rams",
+    ];
+    return superbowlTeamsList.includes(team.name);
+  });
+  displayTeams(superbowlTeams);
 });
