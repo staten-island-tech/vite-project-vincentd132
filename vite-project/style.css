@@ -19,7 +19,7 @@
   background-color: aliceblue;
 }
 .warm {
-  background-color: purple;
+  background-color: #ccca6a;
 }
 
 body {
@@ -94,10 +94,10 @@ button:focus-visible {
 .team-info h3 {
   font-size: 25px;
   margin-bottom: 5px;
-  color: darkgray;
+  color: rgb(0, 0, 0);
 }
 
 .team-info p {
   font-size: 14px;
-  color: darkgray;
+  color: rgb(0, 0, 0);
 }
